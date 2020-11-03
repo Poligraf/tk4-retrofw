@@ -1,7 +1,7 @@
-#include <stdlib.h> 
-#include <stdio.h> 
-#include <string.h> 
-#include <SDL.h> 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <SDL.h>
 
 #include "COptions.h"
 
@@ -28,9 +28,9 @@ void COptionsData::Reset()
 	iStereo = false;
 	iFullScreen = true;
 	iMouseSensitivity = 0.50f; // in percents
-	iMouseMode = 1;
-	iInGameVideoMode = CCoord<int>(640,480);
-	iInGameLargeText = false;
+	iMouseMode = 0;
+	iInGameVideoMode = CCoord<int>(320,200);
+	iInGameLargeText = true;
 	iProxyEnabled = false;
 	iWebVersionCheckingEnabled = false;
 	iMultiPlayGameMode = 0;
@@ -42,17 +42,17 @@ void COptionsData::Reset()
 	iDMTargetSystem = false;
 
 	for (unsigned int a=0;a<KMaxLocalPlayers;a++)
-		strcpy( iName[a], KDefaultName[a] ); 
+		strcpy( iName[a], KDefaultName[a] );
 
-	iKeys[ 0 ].keys[ EKeyLEFT ] = 0 ;
-	iKeys[ 0 ].keys[ EKeyRIGHT ] = 0 ;
-	iKeys[ 0 ].keys[ EKeyUP ] = SDLK_w ;
-	iKeys[ 0 ].keys[ EKeyDOWN ] = SDLK_s ;
-	iKeys[ 0 ].keys[ EKeySHOOT ] = SDLK_SPACE ;
-	iKeys[ 0 ].keys[ EKeySHIFT ] = 0 ;
-	iKeys[ 0 ].keys[ EKeySTRAFE ] = 0 ;
-	iKeys[ 0 ].keys[ EKeyLSTRAFE ] = SDLK_a ;
-	iKeys[ 0 ].keys[ EKeyRSTRAFE ] = SDLK_d ;
+	iKeys[ 0 ].keys[ EKeyLEFT ] = SDLK_LEFT ;
+	iKeys[ 0 ].keys[ EKeyRIGHT ] = SDLK_RIGHT ;
+	iKeys[ 0 ].keys[ EKeyUP ] = SDLK_UP ;
+	iKeys[ 0 ].keys[ EKeyDOWN ] = SDLK_DOWN ;
+	iKeys[ 0 ].keys[ EKeySHOOT ] = SDLK_LCTRL ;
+	iKeys[ 0 ].keys[ EKeySHIFT ] = SDLK_LSHIFT ;
+	iKeys[ 0 ].keys[ EKeySTRAFE ] = SDLK_LALT ;
+	iKeys[ 0 ].keys[ EKeyLSTRAFE ] = SDLK_TAB ;
+	iKeys[ 0 ].keys[ EKeyRSTRAFE ] = SDLK_BACKSPACE ;
 
 	iKeys[ 1 ].keys[ EKeyLEFT ] = SDLK_j ;
 	iKeys[ 1 ].keys[ EKeyRIGHT ] = SDLK_l ;
@@ -124,14 +124,14 @@ void COptions::Save()
 	fclose(cfg);
 }
 
-void COptions::Load() 
+void COptions::Load()
 {
 	FILE *cfg;
 
 	if (filelen(getsavepath(KOptionsFilename).c_str())==sizeof(COptionsData))
 	{
 		cfg = fopen(getsavepath(KOptionsFilename).c_str(), "rb");
-		if (cfg) 
+		if (cfg)
 		{
 			fread(&iData,sizeof(COptionsData), 1,cfg);
 			fclose(cfg);

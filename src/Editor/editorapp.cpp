@@ -26,7 +26,7 @@ bool NewRefreshPossible = false;
 
 static Uint32 TimerCallBack(Uint32 interval)
 {
-	NewRefreshPossible = true;		
+	NewRefreshPossible = true;
 	return interval;
 }
 
@@ -40,20 +40,20 @@ CEditorApp::CEditorApp()
 	atexit(SDL_Quit);
 
 	SDL_SetTimer(1000/KFrameRate, TimerCallBack);
-	SDL_SysWMinfo WndInfo; 
+	SDL_SysWMinfo WndInfo;
 
     WndInfo.EF_SDLWINDOW = 0;
     SDL_VERSION(&WndInfo.version);
-	
+
 	iGD=new CGraphicsDevice("Tapan Kaikki Bloodshed - Level Editor","editor.ico");
-	iGD->SetCursorMode(SDL_ENABLE);
+	iGD->SetCursorMode(SDL_DISABLE);
 	iGD->SetMode(640,480,KBitDepth,0,SDL_RESIZABLE);
-	
+
 	if(SDL_GetWMInfo(&WndInfo)<0)  {
         /* Can't get WndInfo */
 		error("Can't get WndInfo");
 	}
-	
+
 	iGraphics = new CEditorGraphics();
 	iLevel = new CEditableLevel();
 	iEH = new CEventHandler(iGD);

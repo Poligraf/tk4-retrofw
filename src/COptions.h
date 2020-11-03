@@ -10,7 +10,7 @@
 class CGameGraphicsInterface;
 class CSoundPlayer;
 
-#define DEFAULT_MUSICTHEME "Default"
+#define DEFAULT_MUSICTHEME "Heavy"
 
 const float KMusicVolumeMin=0.0f;
 const float KMusicVolumeMax=1.0f;
@@ -53,7 +53,7 @@ public:
 	TNetworkMode iMultiPlayNetworkMode;
 	float iDMSpeed;
 	bool iDMTargetSystem;
-	
+
 	bool iStereo;
 	bool iFullScreen;
 	float iMouseSensitivity;

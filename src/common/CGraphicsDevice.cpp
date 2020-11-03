@@ -255,7 +255,7 @@ int CGraphicsDevice::SetMode(int aWidth,int aHeight,int aBits, bool aFullScreen,
 	iHeight=aHeight;
 	iBits=aBits;
 
-	SDL_ShowCursor(iCursorMode);
+	SDL_ShowCursor(SDL_DISABLE);
 	SDL_WM_SetCaption(iCaptionText,NULL);
 
 	// Let user fuck up (if that's wanted :)
