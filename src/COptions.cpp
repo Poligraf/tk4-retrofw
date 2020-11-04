@@ -30,7 +30,7 @@ void COptionsData::Reset()
 	iMouseSensitivity = 0.50f; // in percents
 	iMouseMode = 0;
 	iInGameVideoMode = CCoord<int>(320,200);
-	iInGameLargeText = true;
+	iInGameLargeText = false;
 	iProxyEnabled = false;
 	iWebVersionCheckingEnabled = false;
 	iMultiPlayGameMode = 0;

@@ -10,7 +10,7 @@
 const int KStraightTolerance = 10;	// Helps player to get the rambo go straight
 const float KPlayerNormalSpeed = 0.75f;
 const float KPlayerRunSpeed    = 1.0f;
-const int KPlayerMaxEnergy = 100;
+const int KPlayerMaxEnergy = 300;
 
 const int KShieldEnergyAmount = 10;
 
@@ -48,9 +48,9 @@ public:
 	void ShopBuy(int aAmount,CDynShopData* aDSD);
 	void ShopSell(int aAmount,CDynShopData* aDSD);
 	int ShieldPrice();
-	int Color() const; 
+	int Color() const;
 	void SetColorByIndex(int aColor);
-    
+
 public:  // From CCharacter
 	bool GetDamage(float damage, IBulletObserver *aObserver);
 	void Animate();
@@ -58,14 +58,14 @@ public:  // From CCharacter
 	void Footprint( int side );
 
 public: // from IBulletObserver
-	
+
 	void BulletHit( float aShare );
 	void BulletPlayerKill( CPlayer* aPlayer );
 	void BulletEnemyKill( CEnemy* aEnemy );
 
 public:
 
-	// TODO: This should be boolean not an int. 
+	// TODO: This should be boolean not an int.
 	// This should NEVER be used as counter as it is now... huoh.
 	int iDead;
 	bool iNoDamage;
@@ -82,7 +82,7 @@ public:
 	int iWeapons[ EWeaponAmount ];
 
 private:
-	
+
 	void PickupCrates( const CRect<int>& aDrawRect );
 	void KickBodyParts();
 	void Straighten();
@@ -102,5 +102,3 @@ private:
 };
 
 #endif
-
-
